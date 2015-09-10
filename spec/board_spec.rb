@@ -45,7 +45,9 @@ end
     subject.place(ship_size_3, 'E5', 'N')
     expect{subject.place(ship_size_3, 'F6', 'E')}.to raise_error "Ships are overlapped"
   end
-    
+  it 'raise error when ship is put of board' do
+  expect{subject.place(ship_size_3, 'J10', 'N')}.to raise_error "Ships are overlapped" 
+end 
     
     
     

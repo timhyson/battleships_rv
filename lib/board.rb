@@ -74,23 +74,23 @@ class Board
   
   def overlap?(size, coord, direction)
     i=map.index(coord)
-   if board[i] != map[i]
+    if board[i] != map[i] || board[i] == nil
      true
    end
     n = 1
     while n < size
       if direction == 'N'
         i += 10
-        return true if board[i] != map[i]
+        return true if board[i] != map[i] || board[i] == nil
       elsif direction == 'S'
         i -= 10
-      return true if board[i] != map[i]
+      return true if board[i] != map[i] || board[i] == nil
       elsif direction == 'E'
         i -= 1
-        return true if board[i] != map[i]
+        return true if board[i] != map[i] || board[i] == nil
       elsif direction =='W'
         i += 1
-       return true if board[i] != map[i]
+       return true if board[i] != map[i] || board[i] == nil
       else
         raise 'Invalid direction'
       end
