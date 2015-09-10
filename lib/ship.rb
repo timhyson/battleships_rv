@@ -1,14 +1,14 @@
 class Ship
-  
-  attr_reader :size , :health 
-  
-  def initialize 
-    @size = 1
-    @health = 1
+
+  attr_reader :size , :health
+
+  def initialize(size)
+    @size = size
+    @health = size
   end
   def hit
     @health = health-1
-    puts "Dead!" 
-  end    
- 
+    puts "Dead!"
+  end
+
 end
