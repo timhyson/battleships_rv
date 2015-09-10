@@ -10,7 +10,7 @@ describe Board do
   
     it 'reports a hit' do
     subject.place(ship, 'A1')
-      expect{subject.fire('A1')}.to output("Hit!\n").to_stdout
+      expect{subject.fire('A1')}.to output("Hit!\nGame Over\n").to_stdout
 end
 
   
@@ -24,7 +24,12 @@ end
     subject.fire('A1')
   end   
   
-  
+  it 'When all ships are dead - game over' do 
+     subject.place(ship, 'A1')
+    expect{subject.fire('A1')}.to output("Hit!\nGame Over\n").to_stdout
+  end
+    
+    
 #   it 'reports a hit' do
 #     subject.place(ship()
 #     expect(subject.hit ship).to eq("Hit!")

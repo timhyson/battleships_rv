@@ -17,9 +17,14 @@ class Board
     if board[i] != map[i]
     puts "Hit!"
       board[i].hit
+      puts 'Game Over' if all_ship_dead?
     else
       puts "Miss!"
   end
+  end
+    def all_ship_dead?
+      board.select{|s| s.class == Ship}.all? {|d| d.health == 0}
+  
   end
 end
     
