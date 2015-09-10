@@ -34,17 +34,24 @@ end
     subject.place(ship_size_3, 'E5', 'N')
     expect( [ subject.board[64], subject.board[54], subject.board[44] ] ).to eq [ ship_size_3, ship_size_3, ship_size_3 ]
   end
+ 
+  it ' Error when we shoot twice in the same place' do
+    subject.place(ship_size_3, 'E5', 'N')
+    subject.fire('E5')
+    expect{subject.fire('E5')}.to raise_error "Shoot in the same place"
+  end
 
-
-#   it 'reports a hit' do
-#     subject.place(ship()
-#     expect(subject.hit ship).to eq("Hit!")
-# end
-
-#   it 'reports a miss' do
-#     subject.place ship
-#     expect(subject.hit("abc")).to eq("Miss")
-#   end
-
-# end
+  it 'you cannot overlap ships' do
+    subject.place(ship_size_3, 'E5', 'N')
+    expect{subject.place(ship_size_3, 'F6', 'E')}.to raise_error "Ships are overlapped"
+  end
+    
+    
+    
+    
+    
+    
+    
+    
+    
 end

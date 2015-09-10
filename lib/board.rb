@@ -25,8 +25,11 @@ class Board
               "I1","I2","I3","I4","I5","I6","I7","I8","I9","I10",
               "J1","J2","J3","J4","J5","J6","J7","J8","J9","J10"]
 
+    @al_hits = []
+    
   end
   def place(ship, coord, direction)
+    fail "Ships are overlapped" if overlap?(ship.size, coord, direction)
     i=board.index(coord)
     board[i] = ship
     n = 1
@@ -51,10 +54,12 @@ class Board
   end
 
   def fire(coord)
+    fail 'Shoot in the same place' if already_hit?(coord) 
     i = map.index(coord)
     if board[i] != map[i]
     puts "Hit!"
       board[i].hit
+      @al_hits << coord
       puts 'Game Over' if all_ship_dead?
     else
       puts "Miss!"
@@ -62,7 +67,39 @@ class Board
   end
     def all_ship_dead?
       board.select{|s| s.class == Ship}.all? {|d| d.health == 0}
-
   end
+  def already_hit?(coord)
+    @al_hits.include?(coord) 
+  end
+  
+  def overlap?(size, coord, direction)
+    i=map.index(coord)
+   if board[i] != map[i]
+     true
+   end
+    n = 1
+    while n < size
+      if direction == 'N'
+        i += 10
+        return true if board[i] != map[i]
+      elsif direction == 'S'
+        i -= 10
+      return true if board[i] != map[i]
+      elsif direction == 'E'
+        i -= 1
+        return true if board[i] != map[i]
+      elsif direction =='W'
+        i += 1
+       return true if board[i] != map[i]
+      else
+        raise 'Invalid direction'
+      end
+      n += 1
+    end
+    
+    
+  end
+     
+  
 end
 
