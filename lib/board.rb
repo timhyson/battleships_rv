@@ -26,9 +26,28 @@ class Board
               "J1","J2","J3","J4","J5","J6","J7","J8","J9","J10"]
 
   end
-  def place(ship, coord)
+  def place(ship, coord, direction)
     i=board.index(coord)
     board[i] = ship
+    n = 1
+    while n < ship.size
+      if direction == 'N'
+        i += 10
+        board[i] = ship
+      elsif direction == 'S'
+        i -= 10
+        board[i] = ship
+      elsif direction == 'E'
+        i -= 1
+        board[i] = ship
+      elsif direction =='W'
+        i += 1
+        board[i] = ship
+      else
+        raise 'Invalid direction'
+      end
+      n += 1
+    end
   end
 
   def fire(coord)

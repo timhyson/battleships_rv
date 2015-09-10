@@ -8,7 +8,7 @@ class Ship
   end
   def hit
     @health = health-1
-    puts "Dead!"
+    puts "Dead!" if health == 0
   end
 
 end

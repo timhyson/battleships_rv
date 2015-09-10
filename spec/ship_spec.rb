@@ -15,7 +15,14 @@ describe Ship do
   end
 
   it 'tells us when it dead' do
-    expect{subject.hit}.to output("Dead!\n").to_stdout
+    ship = Ship.new(5)
+    4.times {ship.hit}
+    expect{ship.hit}.to output("Dead!\n").to_stdout
+  end
+
+  it 'ship of size five, does not return dead when hit for the first time' do
+    ship = Ship.new(5)
+    expect{subject.hit}.not_to output("Dead!\n").to_stdout
   end
 
   it 'lets us choose a size' do
