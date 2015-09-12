@@ -26,7 +26,7 @@ class Board
               "J1","J2","J3","J4","J5","J6","J7","J8","J9","J10"]
 
     @al_hits = []
-    
+
   end
   def place(ship, coord, direction)
     fail "Ships are overlapped" if overlap?(ship.size, coord, direction)
@@ -54,7 +54,7 @@ class Board
   end
 
   def fire(coord)
-    fail 'Shoot in the same place' if already_hit?(coord) 
+    fail 'Shoot in the same place' if already_hit?(coord)
     i = map.index(coord)
     if board[i] != map[i]
     puts "Hit!"
@@ -65,13 +65,14 @@ class Board
       puts "Miss!"
   end
   end
-    def all_ship_dead?
-      board.select{|s| s.class == Ship}.all? {|d| d.health == 0}
+
+  def all_ship_dead?
+      board.select{|s| s.is_a? Ship}.all? {|d| d.health == 0}
   end
   def already_hit?(coord)
-    @al_hits.include?(coord) 
+    @al_hits.include?(coord)
   end
-  
+
   def overlap?(size, coord, direction)
     i=map.index(coord)
     if board[i] != map[i] || board[i] == nil
@@ -96,10 +97,10 @@ class Board
       end
       n += 1
     end
-    
-    
+
+
   end
-     
-  
+
+
 end
 

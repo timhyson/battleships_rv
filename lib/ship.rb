@@ -1,8 +1,8 @@
 class Ship
 
-  attr_reader :size , :health
+  attr_reader :size, :health
 
-  def initialize(size)
+  def initialize(size = 1)
     @size = size
     @health = size
   end
