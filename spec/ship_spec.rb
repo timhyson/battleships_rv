@@ -1,10 +1,10 @@
 require 'ship'
 
 describe Ship do
-    let (:ship) { described_class.new('A1') }
+    let (:ship) { described_class.new('A1', :north) }
 
   it 'has a position when created' do
-    expect(ship.position).to eq('A1')
+    expect(ship.position).to eq(['A1'])
   end
 
   it 'can be hit' do

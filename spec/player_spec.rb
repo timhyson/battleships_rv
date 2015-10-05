@@ -7,17 +7,17 @@ describe Player do
   end
 
   it 'can place ships' do
-    subject.place(Ship, 'A1')
+    subject.place(Ship, 'A1', :north)
   end
 
   it 'can tell us when a ship is hit' do
-    subject.place(Ship, 'A1')
+    subject.place(Ship, 'A1', :north)
     expect(subject.receive_hit('A1')).to eq(:hit)
   end
 
   it 'can report hit positions' do
-    subject.place(Ship, 'A1')
-    subject.place(Ship, 'B2')
+    subject.place(Ship, 'A1', :north)
+    subject.place(Ship, 'B2', :north)
     subject.receive_hit('A1')
     subject.receive_hit('B2')
     expect(subject.hits).to eq(['A1', 'B2'])
@@ -30,7 +30,7 @@ describe Player do
   end
 
   it 'will lose if all ships are hit' do
-    subject.place(Ship, 'A1')
+    subject.place(Ship, 'A1', :north)
     subject.receive_hit('A1')
     expect(subject.lost?).to be(true)
   end

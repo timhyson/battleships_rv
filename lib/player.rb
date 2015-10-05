@@ -14,8 +14,8 @@ class Player
     board.all_sunk?
   end
 
-  def place(ship, position)
-    board.place(Ship.new(position))
+  def place(klass, position, direction)
+    board.place(klass.new(position, direction))
   end
 
   def receive_hit(position)
