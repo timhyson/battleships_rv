@@ -1,4 +1,26 @@
-# require 'player'
-#
-# describe Player do
-# end
+require 'player'
+
+describe Player do
+
+  it 'can lose' do
+    expect(subject.lost?).to be(false)
+  end
+
+  it 'can place ships' do
+    subject.place(Ship, 'A1')
+  end
+
+  it 'can tell us when a ship is hit' do
+    subject.place(Ship, 'A1')
+    expect(subject.receive_hit('A1')).to eq(:hit)
+  end
+
+  it 'can report hit positions' do
+    subject.place(Ship, 'A1')
+    subject.place(Ship, 'B2')
+    subject.receive_hit('A1')
+    subject.receive_hit('B2')
+    expect(subject.hits).to eq(['A1', 'B2'])
+  end
+  
+end
