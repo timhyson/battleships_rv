@@ -23,6 +23,11 @@ describe Board do
     subject.place(sunk_ship)
     expect(subject).to be_all_sunk
   end
+
+  it 'can report if not all ships are sunk' do
+    subject.place(ship)
+    expect(subject).not_to be_all_sunk
+  end
   #
   # it 'reports a miss' do
   #   expect{ subject.fire('A1') }.to output("Miss!\n").to_stdout

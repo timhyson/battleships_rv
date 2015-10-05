@@ -7,6 +7,10 @@ describe Ship do
     expect(ship.position).to eq('A1')
   end
 
+  it 'can be hit' do
+    expect(ship.hit('A1')).to be(:hit)
+  end
+
 #   let(:subject){Ship.new(3)}
 #
 #   it 'ship has health which is equal its life' do
