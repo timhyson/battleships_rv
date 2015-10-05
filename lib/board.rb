@@ -3,6 +3,7 @@ class Board
 
   def initialize
     @ships = []
+    @hits  = []
   end
 
   def receive_hit(position)
@@ -11,6 +12,11 @@ class Board
 
   def place(ship)
     @ships << ship
+  end
+
+  def all_sunk?
+    return false if @ships.empty?
+    !@ships.map(&:sunk?).include? false
   end
 
   # attr_reader :board, :map, :al_hits

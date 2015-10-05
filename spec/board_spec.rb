@@ -1,7 +1,8 @@
 require 'board'
 
 describe Board do
-  let(:ship){ double :ship, position: ['A1'], hit: :hit }
+  let(:ship)      { double :ship, position: ['A1'], hit: :hit, sunk?: false }
+  let(:sunk_ship) { double :ship, position: ['A1'], hit: :hit, sunk?: true  }
   # let(:ship_size_3){double(:ship , :hit => nil, :size => 3)}
 
   it 'reports missed hit when no ship at position' do
@@ -16,6 +17,11 @@ describe Board do
   it 'can receive a hit on a ship' do
     subject.place(ship)
     expect(subject.receive_hit('A1')).to eq(:hit)
+  end
+
+  it 'can report if all ships are hit' do
+    subject.place(sunk_ship)
+    expect(subject).to be_all_sunk
   end
   #
   # it 'reports a miss' do
