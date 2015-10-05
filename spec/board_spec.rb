@@ -1,7 +1,7 @@
 require 'board'
 
 describe Board do
-  let(:ship){ double :ship, position: ['A1'] }
+  let(:ship){ double :ship, position: ['A1'], hit: :hit }
   # let(:ship_size_3){double(:ship , :hit => nil, :size => 3)}
 
   it 'reports missed hit when no ship at position' do
@@ -12,11 +12,11 @@ describe Board do
     subject.place(ship)
     expect(subject.ships.first.position.first).to eq('A1')
   end
-  #
-  # it 'reports a hit' do
-  #   subject.place(ship, 'A1', 'E')
-  #   expect{ subject.fire('A1') }.to output("Hit!\nGame Over\n").to_stdout
-  # end
+
+  it 'can receive a hit on a ship' do
+    subject.place(ship)
+    expect(subject.receive_hit('A1')).to eq(:hit)
+  end
   #
   # it 'reports a miss' do
   #   expect{ subject.fire('A1') }.to output("Miss!\n").to_stdout

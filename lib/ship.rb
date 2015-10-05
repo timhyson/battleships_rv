@@ -1,7 +1,10 @@
-# class Ship
-#
-#   attr_reader :size, :health
-#
+class Ship
+
+  attr_reader :position
+
+  def initialize(position)
+    @position = position
+  end
 #   def initialize(size = 1)
 #     @size = size
 #     @health = size
@@ -11,4 +14,4 @@
 #     puts "Dead!" if health == 0
 #   end
 #
-# end
+end

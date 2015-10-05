@@ -1,6 +1,12 @@
-# require 'ship'
-# describe Ship do
-#
+require 'ship'
+
+describe Ship do
+    let (:ship) { described_class.new('A1') }
+
+  it 'has a position when created' do
+    expect(ship.position).to eq('A1')
+  end
+
 #   let(:subject){Ship.new(3)}
 #
 #   it 'ship has health which is equal its life' do
@@ -31,4 +37,4 @@
 #   end
 #
 #
-# end
+end

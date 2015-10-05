@@ -1,5 +1,4 @@
 class Board
-
   attr_reader :ships
 
   def initialize
@@ -7,7 +6,7 @@ class Board
   end
 
   def receive_hit(position)
-    :miss
+    @ships.map { |ship| ship.hit(position) }.include?(:hit) ? :hit : :miss
   end
 
   def place(ship)
