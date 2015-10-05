@@ -35,4 +35,5 @@ class Board
     position = position.join if position.respond_to?(:join)
     !(position =~ /^([A-Z][0-9])+$/)
   end
+  
 end

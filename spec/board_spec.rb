@@ -54,6 +54,11 @@ describe Board do
     expect(subject.receive_hit('A1')).to eq(:hit)
   end
 
+  it 'can receive a hit on a sub' do
+    subject.place(sub)
+    expect(subject.receive_hit('A2')).to eq(:hit)
+  end
+
   it 'can report if all ships are hit' do
     subject.place(sunk_ship)
     expect(subject).to be_all_sunk
@@ -63,4 +68,5 @@ describe Board do
     subject.place(ship)
     expect(subject).not_to be_all_sunk
   end
+
 end

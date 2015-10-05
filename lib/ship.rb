@@ -47,4 +47,5 @@ class Ship
   def north(position)
     position[0] + (position[1].to_i - 1).to_s
   end
+  
 end

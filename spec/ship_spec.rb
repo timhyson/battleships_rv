@@ -34,15 +34,4 @@ describe Ship do
     expect(ship).to be_sunk
   end
 
-#   it 'ship of size five, does not return dead when hit for the first time' do
-#     ship = Ship.new(5)
-#     expect{subject.hit}.not_to output("Dead!\n").to_stdout
-#   end
-#
-#   it 'lets us choose a size' do
-#     ship = Ship.new(5)
-#     expect(ship.size).to eq 5
-#   end
-#
-#
 end
