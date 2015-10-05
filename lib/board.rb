@@ -12,6 +12,7 @@ class Board
 
   def place(ship)
     fail 'collides with existing ship' if collision?(ship)
+    fail 'cannot place ship outside board' if illegal_position?(ship)
     @ships << ship
   end
 
@@ -29,4 +30,9 @@ class Board
     false
   end
 
+  def illegal_position?(ship)
+    position = ship.position
+    position = position.join if position.respond_to?(:join)
+    !(position =~ /^([A-Z][0-9])+$/)
+  end
 end
