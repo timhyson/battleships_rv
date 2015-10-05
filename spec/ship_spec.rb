@@ -34,4 +34,8 @@ describe Ship do
     expect(ship).to be_sunk
   end
 
+  it 'can be collided with' do
+    expect(ship).to be_collided(described_class.new('A1', :S))
+  end
+  
 end

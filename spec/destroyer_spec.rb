@@ -33,4 +33,19 @@ describe Destroyer do
     expect(destroyer_north.hit('C1')).to eq(:hit)
   end
 
+  it 'handles collisions on start position' do
+    expect(destroyer.collided?(destroyer_west)).to be(true)
+  end
+
+  it 'handles collisions on location other than start position' do
+    expect(destroyer.collided?(destroyer_west)).to be(true)
+  end
+
+  it 'is not able to be hit more than once in the same place' do
+    destroyer.hit('A3')
+    expect(destroyer.hits).to eq(['A3'])
+    destroyer.hit('A3')
+    expect(destroyer.hits).to eq(['A3'])
+  end
+
 end

@@ -59,7 +59,7 @@ describe Board do
     expect(subject.receive_hit('A2')).to eq(:hit)
   end
 
-  it 'can report if all ships are hit' do
+  it 'can report if all ships are sunk' do
     subject.place(sunk_ship)
     expect(subject).to be_all_sunk
   end

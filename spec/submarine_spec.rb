@@ -32,4 +32,19 @@ describe Submarine do
     expect(sub_north.hit('B1')).to eq(:hit)
   end
 
+  it 'handles collisions on start position' do
+    expect(sub.collided?(sub)).to be(true)
+  end
+
+  it 'handles collisions on location other than start position' do
+    expect(sub.collided?(sub_west)).to be(true)
+  end
+
+  it 'is not able to be hit more than once in the same place' do
+    sub_north.hit('B2')
+    expect(sub_north.hits).to eq(['B2'])
+    sub_north.hit('B2')
+    expect(sub_north.hits).to eq(['B2'])
+  end
+
 end
