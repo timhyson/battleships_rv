@@ -4,7 +4,7 @@ Battleships representation built in Ruby and tested in RSpec.  Rebuilt from the 
 
 The game is ready to play when there are two players initialized with a board each, and each board has 5 ships placed. 
 
-By default it is player1's go first and after each shot it will switch the turns until there is a winner. 
+By default Player 1 goes first, and play switches after each shot until there is a winner. 
 
 	
 - How to install this on your machine
